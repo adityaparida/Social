@@ -1,0 +1,97 @@
+<div class="bg">
+    <div class="container-fluid">
+        <div class="container">
+            <nav class="navbar bg-info text-white d-flex justify-content-center">
+                <span class="fs-3">
+                    Registration
+                </span>
+            </nav>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+                        <span class="text-danger"
+                            *ngIf="(f['firstName'].touched || isSubmitted) && f['firstName'].errors?.['required']">
+                            Name Fiield is required.
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Middle Name</mat-label>
+                        <input formControlName="middleName" matInput>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                        <span class="text-danger"
+                            *ngIf="(f['lastName'].touched || isSubmitted) && f['lastName'].errors?.['required']">
+                            Name Field is required.
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <span class="text-danger"
+                            *ngIf="(f['email'].touched || isSubmitted) && f['email'].errors?.['required']">
+                            Mail is required.
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>D.O.B.</mat-label>
+                        <input matInput [matDatepicker]="date" formControlName="dob">
+                        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date></mat-datepicker>
+                        <span class="text-danger"
+                            *ngIf="(f['dob'].touched || isSubmitted) && f['dob'].errors?.['required']">
+                            Date Field required.
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput formControlName="mobileNo">
+                        <span class="text-danger"
+                            *ngIf="(f['mobileNo'].touched || isSubmitted) && f['mobileNo'].errors?.['required']">
+                            Mobile number is required.
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password">
+                        <span class="text-danger"
+                            *ngIf="(f['password'].touched || isSubmitted) && f['password'].errors?.['required']">
+                            Password is required.
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="f['password'].touched && f['password'].errors?.['invalidPassword']">
+                            Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                            letter and 1 number
+                        </span>
+                    </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput formControlName="confirmPassword">
+                        <span class="text-danger"
+                            *ngIf="(f['confirmPassword'].touched || isSubmitted) && f['confirmPassword'].errors?.['required']">
+                            Password is required.
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="f['confirmPassword'].touched && f['confirmPassword'].errors?.['passwordMismatch']">
+                            Passwords doesnot match
+                        </span>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-center">
+                        <button mat-raised-button class="btn btn-info" type="submit">Register</button>
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-center">
+                <a [routerLink]="['/forgot-password']" class="text-primary">Forgot Password?</a>
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+                <span>&nbsp;</span>
+                <a [routerLink]="['/login']" class="text-primary">Login Instead</a>
+            </div>
+        </div>
+    </div>
+</div>

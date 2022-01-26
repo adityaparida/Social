@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-md nav-white sticky-top bg-white text-white">
+        <a class="navbar-brand" [routerLink]="['/posts']">Social</a>
+        <button class="navbar-toggler" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" data-visible="false"
+            id="navbarSupportedContent">
+            <div class="mx-auto">
+                <form class="d-flex">
+                    <input type="search" class="form-control me-2 mt-2" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="ms-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/posts']">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/likes']">Likes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/settings']">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script>
+    const navbar = document.querySelector('.navbar');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navbarToggler.addEventListener('click', () => {
+        const visibility = navbar.getAttribute('data-visible');
+
+        if (visibility === 'false') {
+            navbar.setAttribute('data-visible', true);
+            navbarToggler.setAttribute('aria-expanded', true);
+        } else {
+            navbar.setAttribute('data-visible', false);
+            navbarToggler.setAttribute('aria-expanded', false);
+        }
+    });
+
+</script>
